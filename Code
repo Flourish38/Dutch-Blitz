@@ -1,0 +1,27 @@
+import random
+class Pile:
+    def __init__(self, contents):
+        self.contents = contents
+        self.top = contents[-1]
+    
+    def addTop(self, card):
+        self.contents += card
+    
+    def pushTop(self, pile):
+        pile.addTop(self.top)
+    
+    def shuffle(self):
+        temp = [None] * len(self.contents)
+        i = 0
+        while(None in temp):
+            rand = random.randint(0, len(temp) - 1)
+            if(temp[rand] == None):
+                temp[rand] = self.contents[i]
+                i += 1
+        self.contents = temp
+
+class Card:
+    def __init__(self, color, value):
+        self.color = color
+        self.value = value
+
